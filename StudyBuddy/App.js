@@ -41,11 +41,11 @@ const AuthScreen = ({ onLogin }) => {
 
     return (
         <View style={styles.authContainer}>
-            <Text style={styles.authTitle}>🧠 StudyBuddy</Text>
+            <Text style={styles.authTitle}>📝 StudyBuddy</Text>
             <Text style={styles.authSubtitle}>{isLogin ? 'Welcome Back, Genius.' : 'Join the Squad.'}</Text>
 
-            <TextInput style={styles.authInput} placeholder="Username" placeholderTextColor="#888" value={username} onChangeText={setUsername} autoCapitalize="none" />
-            <TextInput style={styles.authInput} placeholder="Password" placeholderTextColor="#888" value={password} onChangeText={setPassword} secureTextEntry />
+            <TextInput style={styles.authInput} placeholder="Username" placeholderTextColor="white" value={username} onChangeText={setUsername} autoCapitalize="none" />
+            <TextInput style={styles.authInput} placeholder="Password" placeholderTextColor="white" value={password} onChangeText={setPassword} secureTextEntry />
 
             <TouchableOpacity style={styles.authButton} onPress={handleAuth} disabled={loading}>
                 {loading ? <ActivityIndicator color="#000"/> : <Text style={styles.authButtonText}>{isLogin ? 'LOG IN' : 'SIGN UP'}</Text>}
@@ -150,14 +150,14 @@ const MainApp = ({ user, onLogout }) => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={{flexDirection:'row', justifyContent:'space-between', width:'100%', alignItems:'center', marginBottom: 20}}>
-                <Text style={styles.title}>Welcome, {user.username} 👋</Text>
-                <TouchableOpacity onPress={onLogout} style={{backgroundColor:'#FF4444', padding:8, borderRadius:5}}>
-                    <Text style={{color:'white', fontWeight:'bold'}}>LOGOUT</Text>
+                <Text style={styles.title}>How you doin', {user.username} </Text>
+                <TouchableOpacity onPress={onLogout} style={{backgroundColor:'#94B4C1', padding:8, borderRadius:5}}>
+                    <Text style={{color:'black', fontWeight:'bold'}}>LOGOUT</Text>
                 </TouchableOpacity>
             </View>
 
             {/* TIMER */}
-            <Text style={styles.sessionText}>{sessionType === 'Focus' ? '🧠 FOCUS' : '☕ BREAK'}</Text>
+            <Text style={styles.sessionText}>{sessionType === 'Focus' ? 'Focus' : '☕ BREAK'}</Text>
             <Text style={styles.timerText}>{formatTime(timeRemaining)}</Text>
             <TouchableOpacity style={styles.button} onPress={() => setIsRunning(!isRunning)}>
                 <Text style={styles.buttonText}>{isRunning ? 'PAUSE' : 'START'}</Text>
@@ -165,13 +165,13 @@ const MainApp = ({ user, onLogout }) => {
 
             {/* INPUTS */}
             <View style={styles.inputSection}>
-                <TextInput style={styles.inputBox} placeholder="Paste notes..." placeholderTextColor="#888" multiline value={noteText} onChangeText={setNoteText} />
+                <TextInput style={styles.inputBox} placeholder="Paste notes..." placeholderTextColor="white" multiline value={noteText} onChangeText={setNoteText} />
                 <View style={{flexDirection: 'row', gap: 10, marginTop: 10}}>
                     <TouchableOpacity style={[styles.analyzeButton, {flex: 1}]} onPress={analyzeNote} disabled={isLoading}>
-                        {isLoading ? <ActivityIndicator color="#FFF"/> : <Text style={styles.buttonText}>✨ ANALYZE</Text>}
+                        {isLoading ? <ActivityIndicator color="#FFF"/> : <Text style={styles.buttonText}>Analyze</Text>}
                     </TouchableOpacity>
                     <TouchableOpacity style={[styles.scanButton, {flex: 1}]} onPress={pickImage} disabled={isLoading}>
-                        <Text style={styles.buttonText}>📷 SCAN</Text>
+                        <Text style={styles.buttonText}>Scan</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -180,7 +180,7 @@ const MainApp = ({ user, onLogout }) => {
             {aiSummary ? (
                 <View style={styles.summaryContainer}>
                     <View style={{flexDirection:'row', justifyContent:'space-between'}}>
-                        <Text style={styles.summaryTitle}>✨ Summary:</Text>
+                        <Text style={styles.summaryTitle}>Summary:</Text>
                         <TouchableOpacity onPress={speakSummary}><Text style={{fontSize:22}}>🗣️</Text></TouchableOpacity>
                     </View>
                     <Text style={styles.summaryText}>{aiSummary}</Text>
@@ -193,7 +193,7 @@ const MainApp = ({ user, onLogout }) => {
             {/* QUIZ */}
             {aiQuiz && (
                 <View style={styles.quizContainer}>
-                    <Text style={styles.quizTitle}>📝 Quiz</Text>
+                    <Text style={styles.quizTitle}>Quiz</Text>
                     <Text style={styles.questionText}>{aiQuiz.question}</Text>
                     {aiQuiz.options.map((opt, i) => (
                         <TouchableOpacity key={i} style={styles.optionButton} onPress={() => Alert.alert(opt === aiQuiz.answer ? "✅ Correct!" : "❌ Wrong")}>
@@ -223,31 +223,31 @@ export default function App() {
 
 // --- STYLES ---
 const styles = StyleSheet.create({
-    container: { flexGrow: 1, alignItems: 'center', backgroundColor: '#1E1E1E', padding: 20, paddingTop: 50 },
-    authContainer: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: '#1E1E1E' },
-    authTitle: { fontSize: 36, fontWeight: 'bold', color: '#FFD700', textAlign: 'center', marginBottom: 10 },
-    authSubtitle: { fontSize: 18, color: '#BBB', textAlign: 'center', marginBottom: 40 },
-    authInput: { backgroundColor: '#333', color: '#FFF', borderRadius: 10, padding: 15, marginBottom: 15, fontSize: 16 },
-    authButton: { backgroundColor: '#FFD700', padding: 15, borderRadius: 10, alignItems: 'center', marginTop: 10 },
-    authButtonText: { color: '#000', fontWeight: 'bold', fontSize: 18 },
+    container: { flexGrow: 1, alignItems: 'center', backgroundColor: '#213448', padding: 20, paddingTop: 50 },
+    authContainer: { flex: 1, justifyContent: 'center', padding: 20, backgroundColor: '#0F2854' },
+    authTitle: { fontSize: 36, fontWeight: 'bold', color: '#FFE2AF', textAlign: 'center', marginBottom: 10 },
+    authSubtitle: { fontSize: 18, color: '#FFE2AF', textAlign: 'center', marginBottom: 40 },
+    authInput: { backgroundColor: '#4988C4', color: '#FFF', borderRadius: 10, padding: 15, marginBottom: 15, fontSize: 16 },
+    authButton: { backgroundColor: '#BDE8F5', padding: 15, borderRadius: 10, alignItems: 'center', marginTop: 10 },
+    authButtonText: { color: 'black', fontWeight: 'bold', fontSize: 18 },
     switchText: { color: '#2196F3', textAlign: 'center', marginTop: 10, fontSize: 16 },
     
-    title: { fontSize: 24, fontWeight: 'bold', color: '#FFD700' },
-    timerText: { fontSize: 70, fontWeight: '900', color: '#FFF' },
-    sessionText: { fontSize: 20, color: '#AAA', marginBottom: 5 },
-    button: { backgroundColor: '#4CAF50', padding: 10, borderRadius: 8, width: '100%', alignItems: 'center', marginBottom: 20 },
-    buttonText: { color: 'white', fontWeight: 'bold' },
+    title: { fontSize: 24, fontWeight: 'bold', color: '#FFE2AF' },
+    timerText: { fontSize: 70, fontWeight: '900', color: '#FFE2AF' },
+    sessionText: { fontSize: 20, color: '#FFE2AF', marginBottom: 5 },
+    button: { backgroundColor: '#94B4C1', padding: 10, borderRadius: 8, width: '100%', alignItems: 'center', marginBottom: 20 },
+    buttonText: { color: 'black', fontWeight: 'bold' },
     inputSection: { width: '100%' },
-    inputBox: { backgroundColor: '#2C2C2C', color: '#FFF', borderRadius: 10, padding: 15, minHeight: 80, textAlignVertical: 'top' },
-    analyzeButton: { backgroundColor: '#2196F3', padding: 15, borderRadius: 10, alignItems: 'center' },
-    scanButton: { backgroundColor: '#9C27B0', padding: 15, borderRadius: 10, alignItems: 'center' },
-    summaryContainer: { marginTop: 20, padding: 15, backgroundColor: '#333', borderRadius: 10, width: '100%', borderLeftWidth: 4, borderLeftColor: '#FFD700' },
-    summaryTitle: { color: '#FFD700', fontWeight: 'bold', fontSize: 18 },
-    summaryText: { color: '#DDD', lineHeight: 22, fontSize: 16 },
-    tag: { backgroundColor: '#555', color: '#FFF', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 4, fontSize: 12 },
-    quizContainer: { marginTop: 20, padding: 15, backgroundColor: '#444', borderRadius: 10, width: '100%' },
-    quizTitle: { color: '#2196F3', fontWeight: 'bold', marginBottom: 10 },
+    inputBox: { backgroundColor: '#547792', color: '#FFF', borderRadius: 10, padding: 15, minHeight: 80, textAlignVertical: 'top' },
+    analyzeButton: { backgroundColor: '#94B4C1', padding: 15, borderRadius: 10, alignItems: 'center' },
+    scanButton: { backgroundColor: '#94B4C1', padding: 15, borderRadius: 10, alignItems: 'center' },
+    summaryContainer: { marginTop: 20, padding: 15, backgroundColor: '#547792', borderRadius: 10, width: '100%', borderLeftWidth: 4, borderLeftColor: '#FFD700' },
+    summaryTitle: { color: 'white', fontWeight: 'bold', fontSize: 18 },
+    summaryText: { color: 'white', lineHeight: 22, fontSize: 16 },
+    tag: { backgroundColor: '#EAE0CF', color: '#213448', paddingHorizontal: 8, paddingVertical: 4, borderRadius: 4, fontSize: 12 },
+    quizContainer: { marginTop: 20, padding: 15, backgroundColor: '#1C4D8D', borderRadius: 10, width: '100%' },
+    quizTitle: { color: '#BDE8F5', fontWeight: 'bold', marginBottom: 10 },
     questionText: { color: '#FFF', marginBottom: 15, fontStyle: 'italic' },
-    optionButton: { backgroundColor: '#555', padding: 12, borderRadius: 8, marginBottom: 8 },
+    optionButton: { backgroundColor: '#4988C4', padding: 12, borderRadius: 8, marginBottom: 8 },
     optionText: { color: '#FFF', textAlign: 'center', fontWeight: 'bold' },
 });
